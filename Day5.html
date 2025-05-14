@@ -1,0 +1,61 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 5: ES6 and Asynchronous JavaScript</title>
+</head>
+<body>
+  <script>
+    // Lab exercises go here
+
+    // 1. Template Literals (30 minutes)
+    const users = [{ name: "Alice", age: 25 }, { name: "Bob", age: 30 }];
+    
+    users.map(user => {
+      // Use template literals to format the string
+      const userString = `Name: ${user.name}, Age: ${user.age}`;
+      console.log(userString); // Print each formatted string
+    });
+
+    // 2. Promises and Error Handling (30 minutes)
+    const loadData = new Promise((resolve, reject) => {
+      // Simulate a random number to decide whether to resolve or reject
+      setTimeout(() => {
+        const random = Math.random();
+        if (random < 0.5) {
+          reject("Timeout");
+        } else {
+          resolve("Data loaded");
+        }
+      }, 2000);
+    });
+
+    // Using .then and .catch for promise handling
+    loadData
+      .then(result => {
+        console.log(result); // Data loaded on success
+      })
+      .catch(error => {
+        console.log(error); // Timeout on failure
+      });
+
+    // Rewrite using async/await and try/catch
+    const fetchData = async () => {
+      try {
+        const result = await loadData;
+        console.log(result); // Data loaded on success
+      } catch (error) {
+        console.log(error); // Timeout on failure
+      }
+    };
+
+    // Call the async function
+    fetchData();
+  </script>
+</body>
+</html>
+
+
